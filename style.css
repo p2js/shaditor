@@ -1,0 +1,280 @@
+/* Font families */
+@font-face {
+    font-family: 'Open Sans';
+    src: url('./assets/font/OpenSans-Regular.woff2') format('woff2'),
+        url('./assets/font/OpenSans-Regular.woff') format('woff'),
+        url('./assets/font/OpenSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Consolas';
+    src: url('./assets/font/Consolas.woff2') format('woff2'),
+        url('./assets/font/Consolas.woff') format('woff'),
+        url('./assets/font/Consolas.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* Styling */
+/* Main body */
+body {
+    background-color: #222222;
+    font-size: 16px;
+    font-family: "Open Sans", verdana
+}
+#main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+/* Header */
+#startup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #222222;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    text-align: center;
+    display: none;
+}
+#header {
+    margin-top: calc(50vh - 1em);
+    font-family: "Consolas";
+    color: #0892d0;
+    font-size: 5em;
+    /* making header text unselectable */
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+.gradient {
+    background: linear-gradient(to right, #f48fb1, #7e57c2);
+    background-clip: text;
+    color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Editor div */
+#editorDiv {
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    background-color: #505050;
+    margin: auto;
+    width: 45%;
+    float: left;
+    height: 80vh;
+}
+#editor {
+    resize:none;
+    width:100%;
+    height: 95%;
+}
+#resetButton, #runButton {
+    font-size: 14px;
+    background-color: #333;
+    border: transparent;
+    width: 5em;
+    height: 1.7em;
+    font-family: "Consolas";
+    float: right;
+    margin-left: 0.5em;
+}
+#runButton {
+    color: #3cb371;
+}
+#resetButton {
+    color: #C0392b;
+}
+#runButton:hover, #resetButton:hover {
+    background-color: #222;
+}
+#fragmentButton, #vertexButton {
+    font-family: 'Consolas';
+    font-size: 14px;
+    border:transparent;
+    height: 2em;
+    width: 8em;
+    color: #DDD;
+}
+#editor {
+    font-size: 14px;
+}
+/* Right div (contains canvas and settings divs) */
+.right {
+    position: relative;
+    width:50%;
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr;
+}
+/* Canvas div */
+#canvasdiv {
+    display: inline-block;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    background-color: #505050;
+    margin: auto;
+    position: relative;
+    left: 10vw;
+    z-index: 2 !important;
+}
+#glCanvas {
+    background-color: black;
+}
+#time {
+    caret-color: transparent;
+    background: transparent;
+    outline: transparent;
+    color: black;
+    font-size: 14px;
+    border-bottom-color: transparent;
+    width: 5em;
+    margin-left: 0.5em;
+    padding-bottom: 0.05em;
+    border-width: 0px 0px 1px 0px;
+    transition: border-bottom-color 0.2s, color 0.1s;
+}
+#time:focus {
+   border-bottom-color: #FFF;
+}
+#pauseShader {
+    margin-top: 1em;
+    float: right;
+    margin-right: 1em;
+    position: relative;
+}
+#pauseIcon, #playIcon {
+    top: 0;
+    left: 0;
+    width: 1em;
+    height: 1em;    
+    margin: 1px 1px 1px 1px;
+    transition: filter 0.2s, opacity 0.2s;
+    position: absolute;
+    z-index: 1;
+}
+#pauseShader:hover > #playIcon {
+    /* #3cb371 */
+    filter: invert(65%) sepia(19%) saturate(5636%) hue-rotate(100deg) brightness(102%) contrast(53%);
+}
+#pauseShader:hover > #pauseIcon {
+    /* #e2b714 */
+    filter: invert(76%) sepia(27%) saturate(6677%) hue-rotate(11deg) brightness(111%) contrast(84%); 
+}
+.invis {
+    opacity: 0%;
+    z-index: 0 !important;
+}
+
+/* Settings div */
+#settingsDiv {
+    width: auto;
+    display: inline-block;
+    background-color: #454545;
+    position: relative;
+    left: 10vw;
+    z-index: 1 !important;
+    transition: transform 0.2s;
+    transform: translateY(-210px);
+}
+#expandArrow {
+    width: 1.3em;
+    height: 1.3em;
+    left: 50%;
+    margin-top: 0.3em;
+    /* #111111 */
+    filter: invert(0%) sepia(45%) saturate(3325%) hue-rotate(162deg) brightness(47%) contrast(87%);
+    transition: filter 0.2s, transform 0.2s;
+    transform: rotate(-180deg);
+    transform: translateY(210px);
+}
+#expandArrow:hover {
+    filter: invert(56%) sepia(65%) saturate(6043%) hue-rotate(178deg) brightness(101%) contrast(101%);
+}
+#settings {
+    padding-left: 2vw;
+    width: 40%;
+    float: left;
+    height: 100%;
+    margin-bottom: 2vh;
+    margin-top: 1vh;
+}
+.ib {
+    margin-bottom:0;
+    display: inline-block;
+    margin-right: 2%;
+    color: #DDD;
+}
+#applySettings {
+    margin-top: 1em;
+}
+.settingsTextInput {
+    width: 2.1em;
+    margin-left: 0.5em;
+    margin-right: 0.3em;
+}
+#autocomplete {
+    width: 1.2em; 
+    height: 1.2em;
+}
+#saveLoad {
+    padding-top: 1vh;
+    padding-left: 2vw;
+    width: 40%;
+    float: right;
+}
+#saveName {
+    margin-top: 1rem;
+    width: 7em;
+}
+#statusParagraph {
+    color: #f54e48;
+}
+
+/* Animation */
+#startup {
+    animation: fadeOut ease-in 500ms;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        z-index: -1;
+    }
+}
+
+/* Smaller screen accomodation */
+@media only screen and (max-width: 1380px) {
+    #canvasdiv, #settingsDiv {
+        left: 5vw !important;
+    }
+}
+/* Hiding spinner arrows on number inputs */
+/* Chrome, Safari, Edge, Opera  */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Shaditor</title>
+</head>
+<body>
+    <div id="main">
+        <div id="editorDiv">
+            <button id="fragmentButton">shader.frag</button>
+            <button id="vertexButton">shader.vert</button>
+            <button id="runButton" title="reload the shader code">load</button>
+            <button id="resetButton" title="reset to frame 0">reset</button>
+            <br />  
+            <div id="editor" class="text"></div>
+        </div>
+        <div class="right">
+            <div id="canvasdiv">
+                <canvas id="glCanvas" width="500" height="500"></canvas>
+                <br/>
+                <p class="ib">frame: <input type="number" min="0" id="time" value="0"/></p>
+                <div id="pauseShader"><img src="assets/icons/pause.svg" id="pauseIcon"/><img src="assets/icons/play.svg" id="playIcon"/></div>
+            </div>
+            <br/>
+            <div id="settingsDiv">
+                    <img src="assets/icons/arrow.svg" title="expand the settings menu" id="expandArrow"/>
+                <div id="settings">
+                    <p class="ib">Settings</p><button id="applySettings">apply</button>
+                    <br/>
+                    <p class="ib">Canvas width:  <input type="number" min="0" id="canvasWidthArea" class="settingsTextInput" placeholder="500"/>px</p>
+                    <br/>
+                    <p class="ib">Canvas height: <input type="number" min="0" id="canvasHeightArea" class="settingsTextInput" placeholder="500"/>px</p>
+                    <br/>
+                    <p class="ib">Editor font size: <input type="number" min="0" id="editorFontSize" class="settingsTextInput" placeholder="14" /> px</p>
+                    <br/>
+                    <p class="ib">Editor Autocomplete <input type="checkbox" id="autocomplete" /></p>
+                    <br/>
+                    <br/>
+                </div>
+                <div id="saveLoad">
+                    <p class="ib">Editor save/load</p>
+                    <br/>
+                    <input id="saveName" type="text" placeholder="name"/> <button id="saveButton">save</button><button id="loadButton">load</button>
+                    <p id="statusParagraph"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="startup">
+    <p id="header"><a class="gradient">Shaditor</a></p>
+    </div>
+    <!--gl-matrix-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"
+    integrity="sha512-zhHQR0/H5SEBL3Wn6yYSaTTZej12z0hVZKOv3TwCUXT1z5qeqGcXJLLrbERYRScEDDpYIJhPC1fk31gqR783iQ=="
+    crossorigin="anonymous" defer></script>
+    <!--ace editor-->
+    <script src="assets/ace-editor/ace.js"></script>
+    <script src="assets/ace-editor/ext-language_tools.js"></script>
+    <!--main.js-->
+    <script src="main.js" defer></script>
+</body>
+</html>
