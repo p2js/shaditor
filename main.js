@@ -82,6 +82,7 @@ const applySettings = () => {
   canvas.style.height = canvasHeightInput.value ? `${canvasHeightInput.value}px` : "500px";
   canvas.width = canvasWidthInput.value ? canvasWidthInput.value : 500;
   canvas.height = canvasHeightInput.value ? canvasHeightInput.value : 500;
+  if(gl) gl.viewport(0, 0, canvas.width, canvas.height);
 };
 applySettings();
 
